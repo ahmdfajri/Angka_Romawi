@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <center>
+        <p><b>KONVERTER ANGKA ROMAWI</b></p>
+        <p>Silahkan Input:</p> <input type="text" name="" id="inputan">
+        <br>
+        <input type="radio" value="romawi" id="romawi" name="soal2">Ubah Ke Angka Romawi
+        <br>
+        <input type="radio" value="arab" id="arab" name="soal2">Ubah Ke Angka Arab
+        <br>
+        <button onclick="proses()">P R O S E S</button>
+        <p id="result">...</p>
+    </center>
+</head>
+
+<body>
+    <script>
+        function proses() {
+            var inputan = parseInt(document.getElementById("inputan").value)
+
+            if (document.getElementById('romawi').checked) { romawi(inputan) }
+            else if (document.getElementById('arab').checked) { arab() }
+
+
+            function romawi(inputan) {
+                var numeralCodes = [["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],         // Ones
+                ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"],   // Tens
+                ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]];        // Hundreds
+                var numeral = "";
+                // var a = 
+                var digits = inputan.toString().split('').reverse();
+                for (var i = 0; i < digits.length; i++) {
+                    numeral = numeralCodes[i][parseInt(digits[i])] + numeral;
+                }
+                document.getElementById("result").innerHTML = `Angka romawi dari ${inputan} adalah ${numeral}`;
+            }
+
+            function arab() {
+
+            }
+        }
+    </script>
+</body>
+
+</html>
